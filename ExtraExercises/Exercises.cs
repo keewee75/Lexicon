@@ -605,9 +605,11 @@ namespace ExtraExercises
             // Store swear words in an Array
             // Check textual input against the Array and use string manipulation to replace swear words
 
-            string[] swearWords = new string[] { "Hell", "freaking", "bad", "damn" };
-            string[] niceWords = new string[] { "Heaven", "jolly", "good", "gosh" };
-            string myText = "Hell is a freaking bad word, damn damn";
+            string[] swearWords = new string[] { "hell", "freaking", "bad", "damn" };
+            string[] niceWords = new string[] { "heaven", "jolly", "good", "gosh" };
+            //string myText = "Hell is a freaking bad word, damn damn";
+            Console.WriteLine("Enter some text:");
+            string myText = Console.ReadLine();
             string[] myTextArray = myText.Split(' ').ToArray();
             Console.WriteLine(myText + "\n");
             //Console.WriteLine("Please enter some text:");
@@ -642,9 +644,13 @@ namespace ExtraExercises
                 myText = myText.Replace(word, niceWords[indexCount2]);
                 indexCount2++;
             }
-            Console.WriteLine($"\n\nConverted text to '{myText}'\n");
+            Console.WriteLine($"\n\nConverted text to: '{myText}'\n");
         }
 
+        public void RunExerciseTwentyThree()
+        {
+            // Generate
+        }
 
         // -------------------------------------------------------------------
         // Method for Exercise 10: Divide two numbers.
