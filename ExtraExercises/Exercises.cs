@@ -672,9 +672,9 @@ namespace ExtraExercises
 
         public void RunExerciseTwentyFour()
         {
-            //int[] startDeck = new[] { 1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,11,11,11,11,12,12,12,12,13,13,13,13 };
+            int[] startDeck = new[] { 1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,11,11,11,11,12,12,12,12,13,13,13,13 };
             int i = 0, x = 0;
-            int[] startDeck = new[] {2,4,6,8,10,12,14};
+            //int[] startDeck = new[] {2,4,6,8,10,12,14};
             int[] drawnCards = new int[x];
             
             Console.Write($"Your starting deck: ");
@@ -683,8 +683,8 @@ namespace ExtraExercises
                 Console.Write($"{card} ");
             }
             Console.WriteLine("\n");
-            bool IsAlive = false;
-            while (!IsAlive)
+            bool IsAlive = true;
+            while (IsAlive)
             {
                 Console.WriteLine("Press ENTER to Shuffle and draw a card. [Q] to quit");
                 char chr = Console.ReadKey().KeyChar;
@@ -729,6 +729,7 @@ namespace ExtraExercises
                 else
                 {
                     Console.WriteLine("Thanks for playing");
+                    IsAlive = false;
                 }
             }   
         }
