@@ -649,7 +649,88 @@ namespace ExtraExercises
 
         public void RunExerciseTwentyThree()
         {
-            // Generate
+            // Generate 7 unice numbers between 1-40
+            // Each number may only appear once in the array.
+            // Use Random-class to generate numbers, and they should be different each time you run the program.
+
+            List<int> numbers = new();
+
+            for (int i = 1; i <= 40; i++)
+            {
+                numbers.Add(i);
+            }
+
+            for (int i = 0; i < 7; i++)
+            {
+                int index = rnd.Next(numbers.Count);
+                Console.Write(numbers[index] + " ");
+
+                numbers.RemoveAt(index);
+            }
+            Console.WriteLine("\n");
+        }
+
+        public void RunExerciseTwentyFour()
+        {
+            //int[] startDeck = new[] { 1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,11,11,11,11,12,12,12,12,13,13,13,13 };
+            int i = 0, x = 0;
+            int[] startDeck = new[] {2,4,6,8,10,12,14};
+            int[] drawnCards = new int[x];
+            
+            Console.Write($"Your starting deck: ");
+            foreach (int card in startDeck)
+            {
+                Console.Write($"{card} ");
+            }
+            Console.WriteLine("\n");
+            bool IsAlive = false;
+            while (!IsAlive)
+            {
+                Console.WriteLine("Press ENTER to Shuffle and draw a card. [Q] to quit");
+                char chr = Console.ReadKey().KeyChar;
+                chr = char.ToLower(chr);
+                Console.Clear();
+                if (chr != 'q')
+                {
+                    Console.Write("Remaining cards in deck: ");
+                    ShuffleCards(ref startDeck);
+                    int drawnCard = DrawCard(ref startDeck);
+                    drawnCards = drawnCards.Append(drawnCard).ToArray();
+                    
+                    //startDeck = startDeck.Where((source, index) => index != startDeck.Length - 1).ToArray(); // Another way to Resize Array
+                    Array.Resize(ref startDeck, startDeck.Length - 1);
+
+                    foreach (int card in startDeck)
+                    {
+                        Console.Write($"{card} ");
+                    }
+
+                    Console.Write("\nDrawn cards: ");
+                    foreach (int card in drawnCards)
+                    {
+                        Console.Write($"{card} ");
+                    }
+                    Console.WriteLine("\n");
+      
+                    static int DrawCard(ref int[] deck)
+                    {
+                        int card = deck[deck.Length - 1];
+                        return card;
+                    }
+
+                    static void ShuffleCards(ref int[] deck)
+                    {
+                        int[] temp = deck.OrderBy(n => Guid.NewGuid()).ToArray();
+                        Array.Copy(temp, 0, deck, 0, temp.Length);
+                        
+                    }
+                    Console.WriteLine();
+                }
+                else
+                {
+                    Console.WriteLine("Thanks for playing");
+                }
+            }   
         }
 
         // -------------------------------------------------------------------
