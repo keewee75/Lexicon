@@ -734,7 +734,13 @@ namespace ExtraExercises
             }   
         }
 
-        // -------------------------------------------------------------------
+        public void RunExerciseTwentyFive()
+        {
+            Console.WriteLine(InputNumber());
+        }
+
+        /* -------------------------------------------------------------------
+         * ------------------------------------------------------------------- */
         // Method for Exercise 10: Divide two numbers.
         public void DivideTwoNumbers()
         {
@@ -752,6 +758,29 @@ namespace ExtraExercises
                 double result = Convert.ToDouble(a) / Convert.ToDouble(b);
                 Console.WriteLine($"{a} / {b} = {result}");
             }
+        }
+
+        // Method for Exercise 25: Input number. Use Try-cath. Error handling
+        public static int InputNumber()
+        {
+            bool wrongFormat = true;
+            int numberInput = 0;
+            while (wrongFormat)
+            {   
+                try
+                {
+                    Console.Write("Input a number: ");
+                    numberInput = int.Parse(Console.ReadLine());
+                    //wrongFormat = false;
+                    return numberInput;
+                }
+                catch (FormatException e)
+                {
+                    Console.WriteLine(e.Message);
+                    //return 0;
+                }               
+            }
+            return numberInput;
         }
     }
 }

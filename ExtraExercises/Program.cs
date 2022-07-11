@@ -39,6 +39,7 @@ while (keepAlive)
             case 22: ex.RunExerciseTwentyTwo(); break;
             case 23: ex.RunExerciseTwentyThree(); break;
             case 24: ex.RunExerciseTwentyFour(); break;
+            case 25: ex.RunExerciseTwentyFive(); break;
             case -1:
                 keepAlive = false;
                 break;

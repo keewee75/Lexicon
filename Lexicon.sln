@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calculator.Tests", "Calcula
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hangman", "Hangman\Hangman.csproj", "{69D6AFBB-FB2B-4FFD-BC7D-F7E444FE1588}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtraExercises", "ExtraExercises\ExtraExercises.csproj", "{90A8464B-B7A5-47EC-BE54-DC48899BE080}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExtraExercises", "ExtraExercises\ExtraExercises.csproj", "{90A8464B-B7A5-47EC-BE54-DC48899BE080}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendingMachine", "VendingMachine\VendingMachine.csproj", "{04DD10A9-5FE4-4B1D-B47C-EA215F74EBD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{90A8464B-B7A5-47EC-BE54-DC48899BE080}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90A8464B-B7A5-47EC-BE54-DC48899BE080}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90A8464B-B7A5-47EC-BE54-DC48899BE080}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04DD10A9-5FE4-4B1D-B47C-EA215F74EBD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04DD10A9-5FE4-4B1D-B47C-EA215F74EBD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04DD10A9-5FE4-4B1D-B47C-EA215F74EBD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04DD10A9-5FE4-4B1D-B47C-EA215F74EBD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
