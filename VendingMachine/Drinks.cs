@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace VendingMachine
 {
-    internal class ChocolateBounty : ChocolateBaseAbstractClass
+    internal class Drinks : Product
     {
+        
     }
 }
