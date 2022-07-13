@@ -12,13 +12,13 @@ namespace VendingMachine
         {
 
         }
-
+        
         public override void Use()
         {
-            // Output string message when product is purchased and used
+            // Output string message when product is used
             if (Name == "Apple")
             {
-                Console.WriteLine($"This {Name} is crunchy!");
+                Console.WriteLine($"I like this {Name}! Yummy");
             }
             else if (Name == "Pear")
             {
@@ -26,7 +26,7 @@ namespace VendingMachine
             }
             else if (Name == "Orange")
             {
-                Console.WriteLine($"This {Name} is jucy!");
+                Console.WriteLine($"{Name} is juicy and very healthy!");
             }
         }
     }

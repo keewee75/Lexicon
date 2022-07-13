@@ -22,14 +22,14 @@ namespace VendingMachine
             {
                 if (calculatedChange % i == calculatedChange)
                 {
-                    Console.WriteLine($"{i} coins = 0");
+                    Console.WriteLine($"{i} kr = 0");
                 }
                 else if (calculatedChange % i < calculatedChange)
                 {
                     int amountOfCoinUnits = calculatedChange / i;
                     newCalculatedChange = calculatedChange % i;
                     calculatedChange = newCalculatedChange;
-                    Console.WriteLine($"{i} coins = {amountOfCoinUnits}");
+                    Console.WriteLine($"{i} kr = {amountOfCoinUnits}");
                 }
 
             }
@@ -52,8 +52,6 @@ namespace VendingMachine
                 }
             }
             MoneyPool = MoneyPool + inputSum;
-
-            //Console.WriteLine(MoneyPool);
         }
 
         public void Purchase()
@@ -86,9 +84,9 @@ namespace VendingMachine
                     Console.Clear();
                     Console.WriteLine("Choose a category of products: " +
                         "\n------------------------------" +
-                        "\n[1]  - Buy fruit." +
-                        "\n[2]  - Buy snacks." +
-                        "\n[3]  - Buy drink." +
+                        "\n[1]  - Fruits." +
+                        "\n[2]  - Snacks." +
+                        "\n[3]  - Drinks." +
                         "\n[4]  - Exit to main menu.\n");
 
                     ShowAll();

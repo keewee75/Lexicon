@@ -41,10 +41,6 @@ while (keepAlive)
                 Console.Clear();
                 break;
         }
-        //Console.ResetColor();
-        //Console.WriteLine("\nHit any key to continue!");
-        //Console.ReadKey();
-        //Console.Clear();
     }
     catch (FormatException ex)
     {

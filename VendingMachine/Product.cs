@@ -28,7 +28,7 @@ namespace VendingMachine
 
         public virtual void Use()
         {
-            // Output string message when product is purchased and used
+            // Output string message when product is used
             Console.WriteLine($"{Name} is used!");
         }
     }
