@@ -39,6 +39,10 @@ namespace VendingMachine
             }
             MoneyPool = 0;
         }
+        public int IncreaseMoneyPool(int amount)
+        {
+            return MoneyPool += amount;
+        }
 
         public void InsertMoney()
         {
@@ -65,7 +69,8 @@ namespace VendingMachine
                 }
                 else
                 {
-                    MoneyPool = MoneyPool + inputSum;
+                    //MoneyPool = MoneyPool + inputSum;
+                    MoneyPool = IncreaseMoneyPool(inputSum);
                 }
             }
         }
