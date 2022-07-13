@@ -11,6 +11,7 @@ namespace VendingMachine
 
         public readonly int[] MoneyValues = new int[] { 1000, 500, 100, 50, 20, 10, 5, 1 };
         List<Product> Products = new List<Product>();
+        List<Product> AllProducts = new List<Product>();
         public int MoneyPool = 0;
         public void EndTransaction()
         {
@@ -38,10 +39,6 @@ namespace VendingMachine
                 }
             }
             MoneyPool = 0;
-        }
-        public int IncreaseMoneyPool(int amount)
-        {
-            return MoneyPool += amount;
         }
 
         public void InsertMoney()
@@ -82,15 +79,13 @@ namespace VendingMachine
 
         public void ShowAll()
         {
-            var sum = 0;
-            Console.WriteLine("Your basket contains:" + 
-                "\n---------------------");
-            foreach (Product item in Products)
+            
+            Console.WriteLine("Vending Machine contains:" +
+                "\n------------------------");
+            foreach (Product item in AllProducts)
             {
-                sum = sum + item.Price;
                 item.Examine();
             }
-            Console.WriteLine($"\nTotal sum\t{sum}kr");
         }
 
 //----------------------------------------------------------------------------------------------
@@ -110,7 +105,7 @@ namespace VendingMachine
                         "\n[3]  - Drinks." +
                         "\n[4]  - Exit to main menu.\n");
 
-                    ShowAll();
+                    ShowPurchasedProducts();
 
                     var choice = int.Parse(Console.ReadLine() ?? "");
                     Console.WriteLine();
@@ -147,28 +142,28 @@ namespace VendingMachine
 
             while (choice && result < 4)
             {
-                if (result == 1 && MoneyPool >= 101)
+                if (result == 1 && MoneyPool >= 27)
                 {
-                    Product apple = new Fruits("Apple", 101);
+                    Product apple = new Fruits("Apple", 27);
                     Products.Add(apple);
-                    Console.WriteLine("You bought an Apple for 101kr");
-                    MoneyPool = MoneyPool - 101;
+                    Console.WriteLine("You bought an Apple for 27kr");
+                    MoneyPool = MoneyPool - 27;
                     choice = false;
                 }
-                else if (result == 2 && MoneyPool >= 155)
+                else if (result == 2 && MoneyPool >= 28)
                 {
-                    Product orange = new Fruits("Orange", 155);
+                    Product orange = new Fruits("Orange", 28);
                     Products.Add(orange);
-                    Console.WriteLine("You bought an Orange for 155kr");
-                    MoneyPool = MoneyPool - 155;
+                    Console.WriteLine("You bought an Orange for 28kr");
+                    MoneyPool = MoneyPool - 28;
                     choice = false;
                 }
-                else if (result == 3 && MoneyPool >= 210)
+                else if (result == 3 && MoneyPool >= 29)
                 {
-                    Product pear = new Fruits("Pear", 210);
+                    Product pear = new Fruits("Pear", 29);
                     Products.Add(pear);
-                    Console.WriteLine("You bought a Pear for 210kr");
-                    MoneyPool = MoneyPool - 210;
+                    Console.WriteLine("You bought a Pear for 29kr");
+                    MoneyPool = MoneyPool - 29;
                     choice = false;
                 }
                 else
@@ -182,13 +177,91 @@ namespace VendingMachine
         }
         public void BuySnacks()
         {
-            Console.WriteLine("Sorry, this is a healthy Vending Machine. Buy a fruit!");
-            Console.ReadKey();
+            Console.Clear();
+            Console.WriteLine("Buy: " +
+                "\n----" +
+                "\n[1] Chips" +
+                "\n[2] Peanuts" +
+                "\n[3] Pringles");
+            bool choice = int.TryParse(Console.ReadLine(), out int result);
+
+            while (choice && result < 4)
+            {
+                if (result == 1 && MoneyPool >= 45)
+                {
+                    Product chips = new Snacks("Chips", 45);
+                    Products.Add(chips);
+                    Console.WriteLine("You bought Chips for 45kr");
+                    MoneyPool = MoneyPool - 45;
+                    choice = false;
+                }
+                else if (result == 2 && MoneyPool >= 32)
+                {
+                    Product peanuts = new Snacks("Peanuts", 32);
+                    Products.Add(peanuts);
+                    Console.WriteLine("You bought Peanuts for 32kr");
+                    MoneyPool = MoneyPool - 32;
+                    choice = false;
+                }
+                else if (result == 3 && MoneyPool >= 56)
+                {
+                    Product pringles = new Snacks("Pringles", 56);
+                    Products.Add(pringles);
+                    Console.WriteLine("You bought Pringles for 56kr");
+                    MoneyPool = MoneyPool - 56;
+                    choice = false;
+                }
+                else
+                {
+                    Console.WriteLine("No funds, please insert more money!");
+                    choice = false;
+                }
+                Console.ReadKey();
+            }
         }
         public void BuyDrink()
         {
-            Console.WriteLine("Go get some water from the kitchen, it's free!");
-            Console.ReadKey();
+            Console.Clear();
+            Console.WriteLine("Buy: " +
+                "\n----" +
+                "\n[1] Coce" +
+                "\n[2] Pepsi" +
+                "\n[3] Beer");
+            bool choice = int.TryParse(Console.ReadLine(), out int result);
+
+            while (choice && result < 4)
+            {
+                if (result == 1 && MoneyPool >= 22)
+                {
+                    Product coce = new Drinks("Coce", 22);
+                    Products.Add(coce);
+                    Console.WriteLine("You bought Coce for 22kr");
+                    MoneyPool = MoneyPool - 22;
+                    choice = false;
+                }
+                else if (result == 2 && MoneyPool >= 21)
+                {
+                    Product pepsi = new Drinks("Pepsi", 21);
+                    Products.Add(pepsi);
+                    Console.WriteLine("You bought Pepsi for 21kr");
+                    MoneyPool = MoneyPool - 21;
+                    choice = false;
+                }
+                else if (result == 3 && MoneyPool >= 75)
+                {
+                    Product beer = new Drinks("Beer", 75);
+                    Products.Add(beer);
+                    Console.WriteLine("You bought Beer for 75kr");
+                    MoneyPool = MoneyPool - 75;
+                    choice = false;
+                }
+                else
+                {
+                    Console.WriteLine("No funds, please insert more money!");
+                    choice = false;
+                }
+                Console.ReadKey();
+            }
         }
         public void UseProducts()
         {
@@ -204,6 +277,49 @@ namespace VendingMachine
                 }
             }
             Products.Clear();
+        }
+        public void ShowPurchasedProducts()
+        {
+            var sum = 0;
+            Console.WriteLine("Your basket contains:" +
+                "\n---------------------");
+            foreach (Product item in Products)
+            {
+                sum = sum + item.Price;
+                item.Examine();
+            }
+            Console.WriteLine($"\nTotal sum\t{sum}kr");
+        }
+        public void FillUppVendorMachine()
+        {
+            //Fill up fruits
+            Product fruit = new Fruits("Apple", 27);
+            AllProducts.Add(fruit);
+            fruit = new Fruits("Orange", 28);
+            AllProducts.Add(fruit);
+            fruit = new Fruits("Pear", 29);
+            AllProducts.Add(fruit);
+
+            //Fill up snacks
+            Product snack = new Snacks("Chips", 45);
+            AllProducts.Add(snack);
+            snack = new Snacks("Peanuts", 32);
+            AllProducts.Add(snack);
+            snack = new Snacks("Pringles", 56);
+            AllProducts.Add(snack);
+
+            //Fill up drinks
+            Product drink = new Drinks("Coce", 22);
+            AllProducts.Add(drink);
+            drink = new Drinks("Pepsi", 21);
+            AllProducts.Add(drink);
+            drink = new Drinks("Beer", 75);
+            AllProducts.Add(drink);
+
+        }
+        public int IncreaseMoneyPool(int amount)
+        {
+            return MoneyPool += amount;
         }
     }
 }

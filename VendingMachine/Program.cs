@@ -3,6 +3,7 @@
 var keepAlive = true;
 
 VM vm = new VM();
+vm.FillUppVendorMachine();
 
 while (keepAlive)
 {
@@ -19,7 +20,8 @@ while (keepAlive)
             "\n[3]  - Show all products." +
             "\n[4]  - End Transaction." +
             "\n[5]  - Use products." +
-            "\n[6]  - Exit." +
+            "\n[6]  - Show purchased products." +
+            "\n[7]  - Exit." +
             "\nEnter your choice: ");
         var choice = int.Parse(Console.ReadLine() ?? "");
         Console.WriteLine();
@@ -31,7 +33,8 @@ while (keepAlive)
             case 3: vm.ShowAll(); Console.ReadKey();  Console.Clear(); break;
             case 4: vm.EndTransaction(); Console.ReadKey(); Console.Clear(); break;
             case 5: vm.UseProducts(); Console.ReadKey(); Console.Clear(); break;
-            case 6:
+            case 6: vm.ShowPurchasedProducts(); Console.ReadKey(); Console.Clear(); break;
+            case 7:
                 keepAlive = false;
                 break;
             default:

@@ -12,6 +12,10 @@ namespace VendingMachine
         {
 
         }
+        public Product(string name)
+        {
+            Name = name;
+        }
         public Product(string name, int price)
         {
             Name = name;
@@ -23,7 +27,8 @@ namespace VendingMachine
         public void Examine()
         {
             // Show products price and info
-            Console.WriteLine($"{Name}\t\t{Price}kr");
+            //Console.WriteLine($"{Name}\t\t{Price}kr");
+            Console.WriteLine($"{Name}       \t{Price}kr");
         }
 
         public virtual void Use()
