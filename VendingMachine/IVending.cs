@@ -17,7 +17,7 @@ namespace VendingMachine
         // InsertMoney, add money to the pool.
         void InsertMoney();
 
-        // EndTransaction, returns money left in appropriate amount of change (Dictionary)
+        // EndTransaction, returns money left in appropriate amount of change.
         void EndTransaction();
     }
 }

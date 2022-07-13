@@ -18,40 +18,56 @@ namespace VendingMachine
             int newCalculatedChange = 0;
             calculatedChange = MoneyPool;
 
-            foreach (int i in MoneyValues)
+            if (MoneyPool == 0)
             {
-                if (calculatedChange % i == calculatedChange)
+                Console.WriteLine("No funds in Machine!");
+            }
+            else
+            {
+                Console.WriteLine("You receive:");
+                foreach (int i in MoneyValues)
                 {
-                    Console.WriteLine($"{i} kr = 0");
-                }
-                else if (calculatedChange % i < calculatedChange)
-                {
-                    int amountOfCoinUnits = calculatedChange / i;
-                    newCalculatedChange = calculatedChange % i;
-                    calculatedChange = newCalculatedChange;
-                    Console.WriteLine($"{i} kr = {amountOfCoinUnits}");
-                }
+                    if (calculatedChange % i < calculatedChange)
+                    {
+                        int amountOfCoinUnits = calculatedChange / i;
+                        newCalculatedChange = calculatedChange % i;
+                        calculatedChange = newCalculatedChange;
+                        Console.WriteLine($"{amountOfCoinUnits} {i}kr");
+                    }
 
+                }
             }
             MoneyPool = 0;
         }
 
         public void InsertMoney()
         {
-            Console.Write("Insert money to the Vending Machine");
-
             bool input = false;
             int inputSum = 0;
             while (!input)
             {
+                
+                Console.Write("Insert money to the Vending Machine." +
+                "\nValid denomination: [1000, 500, 100, 50, 20, 10, 5, 1]");
+
                 Console.Write("\nYour amount: ");
                 input = int.TryParse(Console.ReadLine(), out inputSum);
                 if (!input)
                 {
-                    Console.WriteLine("The input need to be a number!");
+                    Console.Clear();
+                    Console.WriteLine("The input need to be a number!\n");
+                }
+                else if (!MoneyValues.Contains(inputSum))
+                {
+                    Console.Clear();
+                    Console.WriteLine("Not a valid denomination!\n");
+                    input = false;
+                }
+                else
+                {
+                    MoneyPool = MoneyPool + inputSum;
                 }
             }
-            MoneyPool = MoneyPool + inputSum;
         }
 
         public void Purchase()
@@ -105,9 +121,6 @@ namespace VendingMachine
                             Console.WriteLine("That is not a valid assignment number!");
                             break;
                     }
-                    //Console.WriteLine("\nHit any key to continue!");
-                    //Console.ReadKey();
-                    //Console.Clear();
                 }
                 catch (Exception ex)
                 {
@@ -164,17 +177,26 @@ namespace VendingMachine
         }
         public void BuySnacks()
         {
-
+            Console.WriteLine("Sorry, this is a healthy Vending Machine. Buy a fruit!");
+            Console.ReadKey();
         }
         public void BuyDrink()
         {
-
+            Console.WriteLine("Go get some water from the kitchen, it's free!");
+            Console.ReadKey();
         }
         public void UseProducts()
         {
-            foreach (Product item in Products)
+            if (Products.Count == 0)
             {
-                item.Use();  
+                Console.WriteLine("You haven't purchased any products yet!");
+            }
+            else
+            {
+                foreach (Product item in Products)
+                {
+                    item.Use();
+                }
             }
             Products.Clear();
         }
