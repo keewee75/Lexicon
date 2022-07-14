@@ -12,10 +12,10 @@ namespace VendingMachine
         void Purchase();
 
         // ShowAll. show all products.
-        void ShowAll();
+        int ShowAll();
 
         // InsertMoney, add money to the pool.
-        void InsertMoney();
+        int InsertMoney();
 
         // EndTransaction, returns money left in appropriate amount of change.
         void EndTransaction();

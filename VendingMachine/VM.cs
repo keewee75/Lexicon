@@ -13,6 +13,7 @@ namespace VendingMachine
         List<Product> Products = new List<Product>();
         List<Product> AllProducts = new List<Product>();
         public int MoneyPool = 0;
+        //IVending methods
         public void EndTransaction()
         {
             int calculatedChange = 0;
@@ -41,7 +42,7 @@ namespace VendingMachine
             MoneyPool = 0;
         }
 
-        public void InsertMoney()
+        public int InsertMoney()
         {
             bool input = false;
             int inputSum = 0;
@@ -66,10 +67,10 @@ namespace VendingMachine
                 }
                 else
                 {
-                    //MoneyPool = MoneyPool + inputSum;
                     MoneyPool = IncreaseMoneyPool(inputSum);
                 }
             }
+            return inputSum;
         }
 
         public void Purchase()
@@ -77,7 +78,7 @@ namespace VendingMachine
             PurchaseMenu();
         }
 
-        public void ShowAll()
+        public int ShowAll()
         {
             
             Console.WriteLine("Vending Machine contains:" +
@@ -86,10 +87,16 @@ namespace VendingMachine
             {
                 item.Examine();
             }
+            return AllProducts.Count;
         }
 
-//----------------------------------------------------------------------------------------------
 
+        //VM methods
+
+        public int TotalPurchasedItems()
+        {
+            return Products.Count;
+        }
         public void PurchaseMenu()
         {
             var keepAlive = true;
@@ -320,6 +327,20 @@ namespace VendingMachine
         public int IncreaseMoneyPool(int amount)
         {
             return MoneyPool += amount;
+        }
+        public bool IsValidDenomination(int prospectDenomination)
+        {
+            bool validDenimination = false;
+            
+            foreach (int item in MoneyValues)
+            {
+                if (item == prospectDenomination)
+                {
+                    validDenimination = true;
+                    break;
+                }
+            }
+            return validDenimination;
         }
     }
 }
