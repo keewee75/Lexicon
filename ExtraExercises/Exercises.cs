@@ -736,7 +736,11 @@ namespace ExtraExercises
 
         public void RunExerciseTwentyFive()
         {
-            Console.WriteLine(InputNumber());
+            int number1 = InputNumber();
+            int number2 = InputNumber();
+            double result = DivideByZero(number1, number2);
+            Console.WriteLine(result);
+            
         }
 
         /* -------------------------------------------------------------------
@@ -760,7 +764,7 @@ namespace ExtraExercises
             }
         }
 
-        // Method for Exercise 25: Input number. Use Try-cath. Error handling
+        // Method for Exercise 25: a) Input number. Use Try-catch. Error handling
         public static int InputNumber()
         {
             bool wrongFormat = true;
@@ -771,16 +775,41 @@ namespace ExtraExercises
                 {
                     Console.Write("Input a number: ");
                     numberInput = int.Parse(Console.ReadLine());
-                    //wrongFormat = false;
                     return numberInput;
                 }
                 catch (FormatException e)
                 {
                     Console.WriteLine(e.Message);
-                    //return 0;
                 }               
             }
             return numberInput;
+        }
+
+        // Method for Exercise 25: b) Try-catch DivideByZeroException
+        public static double DivideByZero(int number1, int number2)
+        {
+            double result = 0;
+            
+            if (number2 == 0)
+            {
+                try
+                {
+                    result = number1 / number2;
+                }
+                catch (DivideByZeroException e)
+                {
+
+                    Console.WriteLine(e);
+                }
+            }
+            else
+            {
+                
+                result = (double)number1 / (double)number2;
+            }
+            
+
+            return result;
         }
     }
 }
